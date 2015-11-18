@@ -1,4 +1,4 @@
-# PERANES2015
+# Pancake
 
 ## 必要なもの
 * Node.js, npm
