@@ -38,7 +38,8 @@
     "serve-static": "latest",
     "stylus": "latest",
     "tap": "latest",
-    "through2": "latest"
+    "through2": "latest",
+    "yargs": "latest"
   },
   "browser": {
     "common": "./site-config/common.js"

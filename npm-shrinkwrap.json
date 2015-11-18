@@ -1362,6 +1362,11 @@
         "esprima-fb": {
           "version": "15001.1001.0-dev-harmony-fb",
           "from": "esprima-fb@>=15001.1001.0-dev-harmony-fb <15001.1002.0"
+        },
+        "yargs": {
+          "version": "3.27.0",
+          "from": "yargs@>=3.27.0 <3.28.0",
+          "resolved": "https://registry.npmjs.org/yargs/-/yargs-3.27.0.tgz"
         }
       }
     },
@@ -5069,9 +5074,16 @@
       "resolved": "https://registry.npmjs.org/y18n/-/y18n-3.2.0.tgz"
     },
     "yargs": {
-      "version": "3.27.0",
-      "from": "yargs@>=3.27.0 <3.28.0",
-      "resolved": "https://registry.npmjs.org/yargs/-/yargs-3.27.0.tgz"
+      "version": "3.30.0",
+      "from": "yargs@*",
+      "resolved": "https://registry.npmjs.org/yargs/-/yargs-3.30.0.tgz",
+      "dependencies": {
+        "cliui": {
+          "version": "3.0.3",
+          "from": "cliui@>=3.0.3 <4.0.0",
+          "resolved": "https://registry.npmjs.org/cliui/-/cliui-3.0.3.tgz"
+        }
+      }
     },
     "yauzl": {
       "version": "2.3.1",
