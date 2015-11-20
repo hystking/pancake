@@ -18,7 +18,7 @@ const $browserify = (opt) => {
   })
 };
 
-gulp.task("browserify", () => {
+gulp.task("browserify", () =>
   gulp
   .src(`${config.src}/js/index.js`)
   .pipe($.plumber({
@@ -38,5 +38,5 @@ gulp.task("browserify", () => {
     extname: ".js",
   }))
   .pipe(gulp.dest(`${config.dest}/js`))
-  .pipe($.livereload());
-});
+  .pipe($.livereload())
+);

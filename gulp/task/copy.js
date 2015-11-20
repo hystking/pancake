@@ -1,9 +1,9 @@
 const gulp = require("gulp");
 const $ = require("gulp-load-plugins")();
 const config = require("../config");
+const pngquant = require("imagemin-pngquant");
 
-gulp.task("copy", () => {
-  const pngquant = require("imagemin-pngquant");
+gulp.task("copy", () =>
   gulp
   .src([
     `${config.src}/img/**/*.{png,jpg,gif}`,
@@ -13,5 +13,5 @@ gulp.task("copy", () => {
     progressive: true,
     use: [pngquant()],
   })))
-  .pipe(gulp.dest(config.dest));
-});
+  .pipe(gulp.dest(config.dest))
+);

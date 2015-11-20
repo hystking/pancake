@@ -1,6 +1,6 @@
 const gulp = require("gulp");
+const guruguru = require("../lib/guruguru");
 
-gulp.task("guruguru", () => {
-  const guruguru = require("../lib/guruguru");
-  guruguru(gulp);
-});
+gulp.task("guruguru", () =>
+  guruguru(gulp)
+);

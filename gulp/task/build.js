@@ -14,8 +14,8 @@ const compile = [
   "browserify",
 ];
 
-gulp.task("build", () => {
+gulp.task("build", () =>
   // some tasks (ex. embeded data-url in stylus) depend on compiled static files
   // so we need to separate them!
-  runSequence(["clean"], copy, compile);
-});
+  runSequence(["clean"], copy, compile)
+);

@@ -9,6 +9,8 @@ const _ = require("lodash");
 const stylus = require("stylus");
 const nodes = stylus.nodes;
 
+const nib = require("nib");
+
 const parse = (obj) => {
   let ltr;
   switch(typeof obj) {
@@ -46,8 +48,7 @@ const resolveImagePath = (imagePath) => {
   return ltr;
 }
 
-gulp.task("stylus", () => {
-  const nib = require("nib");
+gulp.task("stylus", () =>
   gulp
   .src(`${config.src}/stylus/index.styl`)
   .pipe($.plumber({
@@ -70,5 +71,5 @@ gulp.task("stylus", () => {
     ],
   }))
   .pipe(gulp.dest(`${config.dest}/css`))
-  .pipe($.livereload());
-});
+  .pipe($.livereload())
+);

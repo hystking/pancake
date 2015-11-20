@@ -2,7 +2,7 @@ const gulp = require("gulp");
 const $ = require("gulp-load-plugins")();
 const config = require("../config");
 
-gulp.task("jade", () => {
+gulp.task("jade", () =>
   gulp
   .src(`${config.src}/jade/index.jade`)
   .pipe($.plumber({
@@ -15,5 +15,5 @@ gulp.task("jade", () => {
     data: config.siteConfig,
   }))
   .pipe(gulp.dest(config.dest))
-  .pipe($.livereload());
-});
+  .pipe($.livereload())
+);
