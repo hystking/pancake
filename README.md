@@ -14,8 +14,7 @@ npm install
 ### npm run dev
 
 開発用タスク  
-build, serve のあと、  
-jade, stylus, js の監視
+http://localhost:9000/ でサーバを立てて、リソース(js, stylus, jade)の監視
 
 ### npm run build
 
