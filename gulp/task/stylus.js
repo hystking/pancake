@@ -4,49 +4,8 @@ const gulp = require("gulp");
 const $ = require("gulp-load-plugins")();
 const config = require("../config");
 
-const path = require("path");
-const _ = require("lodash");
 const stylus = require("stylus");
-const nodes = stylus.nodes;
-
-const nib = require("nib");
-
-const parse = (obj) => {
-  let ltr;
-  switch(typeof obj) {
-    case "string":
-      ltr = new nodes.Literal(obj);
-      ltr.filename = "";
-      break;
-    case "number":
-      ltr = new nodes.Unit(obj, "px");
-      ltr.filename = "";
-      break;
-    case "boolean":
-      ltr = new nodes.Boolean(obj);
-      ltr.filename = "";
-      break;
-    case "object":
-      ltr = _.mapValues(obj, parse);
-      break;
-  }
-  return ltr;
-};
-
-const defineObject = (param) => (styl) => {
-  _.forEach(param, (val, key) => {
-    styl.define(key, parse(val), true);
-  });
-};
-
-const resolveImagePath = (imagePath) => {
-  const stylusPath = `${config.src}/stylus/`;
-  const imageFullPath = `${config.src}/img/${imagePath.val}`;
-  const relativePath = path.relative(stylusPath, imageFullPath);
-  const ltr = new nodes.Literal(`url(${relativePath})`);
-  ltr.filename = ""
-  return ltr;
-}
+const _ = require("lodash");
 
 gulp.task("stylus", () =>
   gulp
@@ -62,14 +21,17 @@ gulp.task("stylus", () =>
     sourcemap: config.isDebug ? {inline: true} : false,
     paths: [`${config.dest}/img`],
     use: [
-      nib(),
-      defineObject(config.siteConfig),
       (styl) => {
-        styl.define("url", resolveImagePath);
+        _.forEach(config.siteConfig, (val, key) => styl.define(key, val, true));
+        styl.define("url", arg => new stylus.nodes.Literal(`url(../img/${arg.val})`));
         styl.define("data-url", stylus.url({limit: false}));
       },
     ],
   }))
+  .pipe($.postcss([
+    require("autoprefixer")(),
+    require("cssnano")(),
+  ]))
   .pipe(gulp.dest(`${config.dest}/css`))
   .pipe($.livereload())
 );
