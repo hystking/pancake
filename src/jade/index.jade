@@ -1,12 +1,12 @@
 extend base
 
 block append meta
-  // Meta Infomation
+  //- Meta Infomations
   title= meta.title
   meta(name="description", content=meta.description)
   meta(name="keywords", content=meta.keywords)
 
-  // Facebook OGP
+  //- Facebook OGP
   meta(name="og:title", content=meta.title)
   meta(name="og:description", content=meta.description)
   meta(name="og:type", content="website")
@@ -14,7 +14,7 @@ block append meta
   meta(name="og:image", content=meta.ogImage)
   meta(name="og:site_name", content=meta.title)
 
-  // Twitter Card
+  //- Twitter Card
   meta(name="twitter:card", content="summary_large_image")
   meta(name="twitter:title", content=meta.title)
   meta(name="twitter:description", content=meta.description)
