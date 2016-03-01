@@ -18,7 +18,6 @@ gulp.task("stylus", () =>
   }))
   .pipe($.if(config.isDebug, $.sourcemaps.init()))
   .pipe($.stylus({
-    compress: !config.isDebug,
     sourcemap: config.isDebug ? {inline: true} : false,
     paths: [`${config.dest}/img`],
     use: [
