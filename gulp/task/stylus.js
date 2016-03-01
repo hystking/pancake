@@ -16,6 +16,7 @@ gulp.task("stylus", () =>
       this.emit("end");
     },
   }))
+  .pipe($.if(config.isDebug, $.sourcemaps.init()))
   .pipe($.stylus({
     compress: !config.isDebug,
     sourcemap: config.isDebug ? {inline: true} : false,
@@ -32,6 +33,7 @@ gulp.task("stylus", () =>
     require("autoprefixer")(),
     require("cssnano")(),
   ]))
+  .pipe($.if(config.isDebug, $.sourcemaps.write()))
   .pipe(gulp.dest(`${config.dest}/css`))
   .pipe($.livereload())
 );

@@ -31,12 +31,14 @@ gulp.task("browserify", () =>
     extensions: [".js", ".json"],
     debug: config.isDebug,
   }))
+  .pipe($.if(config.isDebug, $.sourcemaps.init({loadMaps: true})))
   .pipe($.if(!config.isDebug, $.uglify({
     preserveComments: "some",
   })))
   .pipe($.rename({
     extname: ".js",
   }))
+  .pipe($.if(config.isDebug, $.sourcemaps.write()))
   .pipe(gulp.dest(`${config.dest}/js`))
   .pipe($.livereload())
 );
